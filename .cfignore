@@ -1,0 +1,18 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/server/data
+
+# production
+/build
+/src
+/doc
+/public
+
+package-lock.json
+.vscode
+Dockerfile
+.dockerignore
+debug.log
+logs.txt

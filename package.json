@@ -1,0 +1,73 @@
+{
+	"name": "jira-taskboard",
+	"version": "6.0.0",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^5.15.3",
+		"@fortawesome/fontawesome-svg-core": "^1.2.35",
+		"@fortawesome/free-solid-svg-icons": "^5.15.3",
+		"@sap/xsenv": "^3.2.1",
+		"@sap/xssec": "^3.2.13",
+		"axios": "^0.21.1",
+		"body-parser": "^1.19.0",
+		"bootstrap": "^5.1.3",
+		"cfenv": "^1.2.4",
+		"chart.js": "^3.8.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
+		"font-awesome": "^4.7.0",
+		"html-react-parser": "^1.2.8",
+		"jira-client": "^8.0.0",
+		"log4js": "^6.4.2",
+		"mongodb": "^4.4.0",
+		"mongoose": "^6.2.4",
+		"passport": "^0.5.2",
+		"path": "^0.12.7",
+		"react": "^16.14.0",
+		"react-bootstrap": "^2.2.2",
+		"react-chartjs-2": "^4.2.0",
+		"react-dom": "^16.14.0",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "3.0.1"
+	},
+	"proxy": "http://localhost:8088",
+	"scripts": {
+		"build-prod": "react-scripts build && cp build/* server/build/ -f -r",
+		"refresh": "git pull && npm run build-prod && C:/WINDOWS/system32/net.exe stop jira-taskboard && C:/WINDOWS/system32/net.exe start jira-taskboard",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"start-server": "nodemon -r dotenv/config server/server.js --watch server/*",
+		"start-front": "react-scripts start",
+		"build-front": "react-scripts build",
+		"start": "concurrently \"npm run start-server\" \"npm run start-front\" --kill-others",
+		"start-cf": "node server/server.js",
+		"cf-deploy": "npm run build-prod && cf push",
+		"cf-deploy-app": "npm run build-prod && cf push ois-dashboard-app"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.3%",
+			"not ie 11",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version",
+			">0.3%",
+			"not ie 11",
+			"not dead",
+			"not op_mini all"
+		]
+	},
+	"devDependencies": {
+		"concurrently": "^6.5.1",
+		"nodemon": "^2.0.15"
+	}
+}
